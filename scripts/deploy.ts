@@ -9,8 +9,9 @@ async function main() {
   console.log(`BibittoSwapERC20 has deployed to ${erc20.address}`);
 
   // Factory
+  const feeToSetter = '0x5FbDB2315678afecb367f032d93F642f64180aa3';
   const BibittoSwapFactory = await ethers.getContractFactory('BibittoSwapFactory');
-  const factory = await BibittoSwapFactory.deploy('0x5FbDB2315678afecb367f032d93F642f64180aa3');
+  const factory = await BibittoSwapFactory.deploy(feeToSetter);
   await factory.deployed();
   console.log(`BibittoSwapFactory has deployed to ${factory.address}`);
 
