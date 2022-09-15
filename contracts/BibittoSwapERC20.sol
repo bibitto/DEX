@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.5.0;
+pragma solidity 0.5.16;
 
 import './interfaces/IBibittoSwapERC20.sol';
-import '@openzeppelin/contracts/utils/math/SafeMath.sol';
+import './libraries/SafeMath.sol';
 
 contract BibittoSwapERC20 is IBibittoSwapERC20 {
     using SafeMath for uint;
@@ -76,7 +76,7 @@ contract BibittoSwapERC20 is IBibittoSwapERC20 {
 
     function transferFrom(address from, address to, uint value) external returns (bool) {
         // uint(-1) = max number
-        if (allowance[from][msg.sender] != type(uint).max) {
+        if (allowance[from][msg.sender] != uint256(-1)) {
             allowance[from][msg.sender] = allowance[from][msg.sender].sub(value);
         }
         _transfer(from, to, value);
