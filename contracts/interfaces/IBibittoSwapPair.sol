@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity >=0.5.0;
 
 interface IBibittoSwapPair {
     event Approval(address indexed owner, address indexed spender, uint value);

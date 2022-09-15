@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity >=0.5.0;
 
 import '@openzeppelin/contracts/utils/math/Math.sol';
 import './libraries/UQ112x112.sol';
 import './interfaces/IERC20.sol';
 import './interfaces/IBibittoSwapFactory.sol';
 import './interfaces/IBibittoSwapCallee.sol';
-import './interfaces/IBibittoSwapPairs.sol';
+import './interfaces/IBibittoSwapPair.sol';
 import './BibittoSwapERC20.sol';
 
 // implements the actual pool that exchanges tokens

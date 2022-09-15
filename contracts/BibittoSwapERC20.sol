@@ -1,4 +1,5 @@
-pragma solidity ^0.8.9;
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.5.0;
 
 import './interfaces/IBibittoSwapERC20.sol';
 import '@openzeppelin/contracts/utils/math/SafeMath.sol';
@@ -27,7 +28,7 @@ contract BibittoSwapERC20 is IBibittoSwapERC20 {
     constructor() public {
         uint chainId;
         assembly {
-            chainId := chainid
+            chainId := chainid()
         }
         DOMAIN_SEPARATOR = keccak256(
             abi.encode(
@@ -75,7 +76,7 @@ contract BibittoSwapERC20 is IBibittoSwapERC20 {
 
     function transferFrom(address from, address to, uint value) external returns (bool) {
         // uint(-1) = max number
-        if (allowance[from][msg.sender] != uint(-1)) {
+        if (allowance[from][msg.sender] != type(uint).max) {
             allowance[from][msg.sender] = allowance[from][msg.sender].sub(value);
         }
         _transfer(from, to, value);
